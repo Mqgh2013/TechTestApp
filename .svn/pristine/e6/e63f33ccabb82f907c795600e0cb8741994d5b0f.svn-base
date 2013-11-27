@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "AngularJS";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script  type="text/javascript" src="~/Scripts/angular.js"></script>
+<script  type="text/javascript" src="~/Scripts/AngularJSMain.js"></script>
+
+<h2>AngularJS</h2>
+<div ng-app="rogerApp">
+    <input type="text" placeholder="Please input your name" ng-model="yourName"/>
+    <h1>Hello,{{yourName}}!</h1>
+    <h6>{{name}}</h6>
+    <div ng-controller="rogerController">
+        <h6>Come from controller scope:<br/></h6>
+        <b>Name</b>:{{person.name}}<br/>
+        <b>Age</b>:{{person.Age}}<br/>
+        <div ng-controller="childController">
+            <input type="text" ng-model="person.name" placeholder="Name"/>
+            <a href="#" ng-click="SayHello()">Say Hello</a>
+            <span>{{person}}</span><br/>    
+        </div>
+    </div>
+    
+    <div ng-controller="playerController">
+        <button   ng-click="play()" ng-show="!playing">Player</button>
+        <button   ng-click="stop()" ng-show="playing">Stop</button>
+        Playing audio:<b>{{playing}}</b>
+    </div>
+    
+    <div ng-controller="clockController">
+        <b ng-init='name = "clockController"'>controller, {{ name }}</b><br/>
+        <b>{{clock}}</b>
+        <button ng-init="shouldShow=true" ng-click="shouldShow=!shouldShow" >ShouldShow or hide?</button>
+        <div ng-show="shouldShow">Showing{{shouldShow}}</div>
+        <div ng-hide="shouldShow">Hiding{{shouldShow}}</div>
+    </div>
+    <div ng-controller="httpController">
+        <b ng-init='name = "httpController"'>controller, {{ name }}</b><br/>
+        <button ng-click="makeRequest()">Make Request</button>
+        <button ng-click="clearResponse()">Clear Response</button>
+        http Requst response:{{response}}
+        <h5 ng-repeat="item in listRepeat">{{item.name}}</h5>
+        <ul>
+            <li ng-repeat="(name,color) in people">{{name}}'s favorite color is {{color|uppercase}}.</li>
+        </ul><h3>DateType:{{today|date:'yy-dd-ss'}}</h3> 
+        <h3>filter debug json:{{[{'name':'nihao','age':'90'},{'name':'sss','age':'100'}]}}</h3>
+        {{{'name':'nihao','age':'90'}}}
+        {{{'name':'nihao','age':'90'} | json}}
+
+        <h3>limitTo {{ "hello the world, i am roger zhang" | limitTo:10}}</h3> 
+          
+        {{ "San Francisco is often cloudy" | uppercase }}   san francisco is often cloudy
+    </div>
+
+</div>
+

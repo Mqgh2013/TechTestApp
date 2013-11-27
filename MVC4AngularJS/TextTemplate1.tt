@@ -1,0 +1,51 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+   <#@ output extension=".txt" #>
+    
+    
+   <#@ template debug="false" hostspecific="false" language="C#" #>
+   <#@ output extension=".cs" #>
+   <# var properties = new string [] {"P1", "P2", "P3"}; #>
+   class MyGeneratedClass {
+   <# 
+     foreach (string propertyName in properties)
+     { #>
+     private int <#= propertyName #> = 0;
+   <# } #>
+   }cop
+   <#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ConsoleApplication1
+{    
+    public class User
+    {
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public int UserID { get; set; }
+
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
+        /// Email
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// 手机号
+        /// </summary>
+        public string Mobile { get; set; }
+    }
+}
